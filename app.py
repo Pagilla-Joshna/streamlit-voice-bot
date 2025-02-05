@@ -1,4 +1,5 @@
-
+import os
+os.system("pip install torch transformers pydub audiorecorder numpy wave ffmpeg-python")
 import streamlit as st
 import torch
 from transformers import WhisperProcessor, WhisperForConditionalGeneration, pipeline
