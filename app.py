@@ -8,6 +8,18 @@ from audiorecorder import audiorecorder
 import io, numpy as np
 import wave
 import os
+from huggingface_hub import login
+
+# Authenticate Hugging Face account
+os.environ["HF_TOKEN"] = "your_huggingface_access_token"
+login(token=os.getenv("HF_TOKEN"))
+
+# Load models
+processor = WhisperProcessor.from_pretrained("openai/whisper-small", use_auth_token=True)
+model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-small", use_auth_token=True)
+
+pipe = pipeline("text-generation", model="meta-llama/Llama-3.2-1B-Instruct", device=0)
+tts_model = pipeline("text-to-speech", model="facebook/mms-tts-eng", device=0)
 
 st.set_page_config(layout="wide")
 
