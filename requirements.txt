@@ -5,3 +5,5 @@ pydub
 streamlit-audiorecorder
 numpy
 python-dotenv
+wave
+ffmpeg-python
